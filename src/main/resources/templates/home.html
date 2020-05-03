@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <title>Corona Virus Live Tracker - IEM</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" >
+
+    <script th:inline="none">
+
+            $(document).ready(function() {
+            $('#example').DataTable( {
+                "order": [[ 3, "desc" ]]
+            } );
+        } );
+    </script>
+
+</head>
+
+<body style="background-color:powderblue;">
+
+
+
+
+
+
+<center><h2>Corona Virus Live Tracker</h2></center>
+
+<center><div class="card-group">
+
+<div class="card text-white bg-primary mb-3" style="max-width: 28rem;">
+    <div class="card-header">Cases</div>
+    <div class="card-body">
+        <h2 class="card-title">Total Corona Virus Cases</h2>
+        <center> <h3><p th:text="${TotalCases}">Corona Virus Tracker</p></h3></center>
+
+    </div>
+</div>
+
+<div class="card text-white bg-danger mb-3" style="max-width: 28rem;">
+    <div class="card-header">Death Cases</div>
+    <div class="card-body">
+        <center>
+        <h2 class="card-title">Total Death Cases</h2>
+        <h3><p th:text="${deathcount}">Corona Virus Tracker</p></h3></center>
+        <button class="btn btn-secondary" onclick="window.location.href='/death'">Death Report Country Wise</button>
+
+
+
+    </div>
+</div>
+
+</div></center>
+
+<!--<div class="card w-50">
+    <div class="card-body">
+        <center>
+        <h3 class="card-title">Total Cases : </h3>
+        <h3><p th:text="${TotalCases}">Corona Virus Tracker</p></h3>
+        </center>
+        <center>
+            <h3 class="card-title">Total Death : </h3>
+            <h3><p th:text="${DeathlocationWiseData}">Corona Virus Tracker</p></h3>
+        </center>
+
+    </div>
+</div>-->
+<marquee>Website update in every hr.......</marquee>
+<div class="table-responsive">
+    <table id="example"  class="table table-bordered " style="width:100%">
+        <thead>
+    <tr>
+
+            <th>Country</th>
+            <th>State</th>
+            <th>Total Count</th>
+            <th>Rise in Cases</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="mylocation : ${locationWiseData}">
+            <td th:text="${mylocation.country}"></td>
+            <td th:text="${mylocation.state}"></td>
+
+            <td th:text="${mylocation.latestCount}">0</td>
+            <td th:text="${mylocation.casesrise}">0</td>
+        </tbody>
+        </tr>
+    </table>
+</div>
+<center><p><b>Made by Yash Kanoria</b></p></center>
+</body>
+
+</html>

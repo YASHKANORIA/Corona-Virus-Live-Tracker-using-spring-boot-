@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Corona Virus Live Tracker - IEM</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+    <!--    <link rel=datatable" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">-->
+    <!--    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>-->
+    <!--    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>-->
+    <link rel="stylesheet" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- <script>$(document).ready(function() {
+         $('#example').DataTable();
+     } );</script>-->
+
+</head>
+
+<body>
+<h1>Corona Virus</h1>
+<p th:text="${TotalDeathCases}">Corona Virus Tracker</p>
+
+<div class="container">
+
+    <table id="example" class="display" style="width:100%">
+        <tr>
+
+            <th>State</th>
+            <th>Country</th>
+            <th>Total Count</th>
+            <th>Rise in Cases</th>
+        </tr>
+        <tr th:each="myDeathlocation : ${DeathlocationWiseData}">
+            <td th:text="${myDeathlocation.state}"></td>
+            <td th:text="${myDeathlocation.Country}"></td>
+            <td th:text="${myDeathlocation.DeathlatestCount}">0</td>
+            <td th:text="${myDeathlocation.Deathrise}">0</td>
+        </tr>
+    </table>
+</div>
+</body>
+
+</html>
